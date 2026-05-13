@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
+
 	conferenceName := "Go Conference" // var conferenceName string = "Go Conference" // var conferenceName = "Go Conference"
 	const conferenceTickets int = 50
 	var remainingTickets uint = 50
@@ -38,21 +39,32 @@ func main() {
 		fmt.Println("Enter number of tickets desired: ")
 		fmt.Scan(&userTickets)
 
-		remainingTickets = remainingTickets - userTickets
-		bookings = append(bookings, firstName+" "+lastName)
+		if userTickets <= remainingTickets {
+			remainingTickets = remainingTickets - userTickets
+			bookings = append(bookings, firstName+" "+lastName)
 
-		fmt.Printf("\nThank you %v %v for booking %v tickets!\n\nYou will receive a confirmation message at %v.\n", firstName, lastName, userTickets, email) // fmt.Println(userName)
-		fmt.Printf("%v tickets remaining out of %v total for %v\n\n", remainingTickets, conferenceTickets, conferenceName)
+			fmt.Printf("\nThank you %v %v for booking %v tickets!\n\nYou will receive a confirmation message at %v.\n", firstName, lastName, userTickets, email) // fmt.Println(userName)
+			fmt.Printf("%v tickets remaining out of %v total for %v\n\n", remainingTickets, conferenceTickets, conferenceName)
 
-		firstNames := []string{}
-		for _, booking := range bookings {
-			var names = strings.Fields(booking)
-			firstNames = append(firstNames, names[0])
+			firstNames := []string{}
+			for _, booking := range bookings {
+				var names = strings.Fields(booking)
+				firstNames = append(firstNames, names[0])
+			}
+
+			fmt.Printf("The first names of our bookings are: %v\n\n", firstNames) // fmt.Printf("These are all our bookings: %v\n\n", bookings)
+
+			if remainingTickets == 0 { // var noTicketsRemaining bool = remainingTickets == 0 // noTicketsRemaining := remainingTickets == 0
+				// end the program
+				fmt.Println("Our conference is booked out. Come back next year.")
+				break
+			}
+
+		} else {
+
+			fmt.Printf("We only have %v tickets remaining, so you can't book %v tickets.\n\n", remainingTickets, userTickets)
 		}
-
-		// fmt.Printf("These are all our bookings: %v\n\n", bookings)
-		fmt.Printf("The first names of our bookings are: %v\n\n", firstNames)
-
-		fmt.Printf("Have a nice day!\n\n")
 	}
+
+	fmt.Printf("Have a nice day!\n\n")
 }
