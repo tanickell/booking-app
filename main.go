@@ -37,12 +37,10 @@ func main() {
 	remainingTickets = remainingTickets - userTickets
 	bookings = append(bookings, firstName+" "+lastName)
 
-	fmt.Printf("The whole slice: %v\n", bookings)
-	fmt.Printf("The first value: %v\n", bookings[0])
-	fmt.Printf("Slice type: %T\n", bookings)
-	fmt.Printf("Slice length: %v\n", len(bookings))
-
 	fmt.Printf("\nThank you %v %v for booking %v tickets!\n\nYou will receive a confirmation message at %v.\n", firstName, lastName, userTickets, email) // fmt.Println(userName)
 	fmt.Printf("%v tickets remaining out of %v total for %v\n\n", remainingTickets, conferenceTickets, conferenceName)
+
+	fmt.Printf("These are all our bookings: %v\n\n", bookings)
+
 	fmt.Println("Have a nice day!")
 }
