@@ -11,10 +11,14 @@ func main() {
 	fmt.Printf("We have a total of %v tickets, with %v still available.\n", conferenceTickets, remainingTickets)
 	fmt.Println("Get your tickets here to attend.")
 
+	var bookings [50]string // var bookings = [50]string{"Nana", "Nicole", "Peter"} // var bookings = [50]string{}
+	// bookings[0] = "Nana"
+	// bookings[1] = "Nicole"
+
 	var firstName string
 	var lastName string
 	var email string
-	var userTickets int
+	var userTickets uint
 
 	// ask the user for their first name
 	fmt.Println("Enter your first name: ")
@@ -32,5 +36,15 @@ func main() {
 	fmt.Println("Enter number of tickets desired: ")
 	fmt.Scan(&userTickets)
 
-	fmt.Printf("\nThank you %v %v for booking %v tickets!\n\nYou will receive a confirmation message at %v.\nHave a nice day!\n", firstName, lastName, userTickets, email) // fmt.Println(userName)
+	remainingTickets = remainingTickets - userTickets
+	bookings[0] = firstName + " " + lastName
+
+	fmt.Printf("The whole array: %v\n", bookings)
+	fmt.Printf("The first value: %v\n", bookings[0])
+	fmt.Printf("Array type: %T\n", bookings)
+	fmt.Printf("Array length: %v\n", len(bookings))
+
+	fmt.Printf("\nThank you %v %v for booking %v tickets!\n\nYou will receive a confirmation message at %v.\n", firstName, lastName, userTickets, email) // fmt.Println(userName)
+	fmt.Printf("%v tickets remaining out of %v total for %v\n\n", remainingTickets, conferenceTickets, conferenceName)
+	fmt.Println("Have a nice day!")
 }
