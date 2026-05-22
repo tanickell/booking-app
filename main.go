@@ -66,5 +66,6 @@ func main() {
 		}
 	}
 
+	// print a goodbye message :D
 	fmt.Printf("Have a nice day!\n\n")
 }
